@@ -13,6 +13,8 @@ func main() {
 		return
 	})
 
+	log.Fatal("adsadas")
+
 	log.Printf("Backend: running on address %s", address)
 	http.ListenAndServe(address, nil)
 }
