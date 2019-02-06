@@ -12,6 +12,53 @@ This kubernetes tutorial is using `minikube` and will cover this following agend
 
 5. Deploy an application to kubernetes cluster using helm
 
+## Pre-Requisite
+
+To be able to run this tutorial, you need to install several things:
+
+### Install Docker
+
+**Ubuntu**
+
+Please look into [this](https://docs.docker.com/install/linux/docker-ce/ubuntu/) page and follow the instruction to install docker CE linux for ubuntu.
+
+Or 
+
+Simply use this script, use it at your own risk:
+
+```bash
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sudo sh get-docker.sh
+```
+
+After docker is installed, run `  sudo usermod -aG docker your-user` to run `docker` command as non-root user.
+
+**MacOS**
+
+Please [visit](https://hub.docker.com/editions/community/docker-ce-desktop-mac) this link to install docker CE Deskop-Mac for macOS.
+
+### Install Kubectl
+
+**Debian & Ubuntu**
+
+Run this script:
+
+```bash
+sudo apt-get update && sudo apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubectl
+```
+
+**Binary**
+
+1. Run `curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl`. To download specific version, please replace the `$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)` with specific version number, for example v.1.13.0.
+2. Make the kubectl binary executeable `chmod +x ./kubectl`
+3. Move the binary to your path `sudo mv ./kubectl /usr/local/bin/kubectl`
+
+## Minikube
+
 ## Helm
 
 For helm to be fully functional, you need to `install helm` on your local and then `install tiller` to your k8s-cluster
@@ -49,3 +96,5 @@ tiller-deploy-69ffbf64bc-p2mbl         1/1       Running   1          10s
 ```
 
 ## Jenkins
+
+## GoCD 
