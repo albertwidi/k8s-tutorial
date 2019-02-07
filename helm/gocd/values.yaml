@@ -293,7 +293,7 @@ agent:
   restartPolicy: Always
 
   # agent.privileged is needed for running Docker-in-Docker (DinD) agents
-  privileged: false
+  privileged: true
 
   healthCheck:
    # agent.healthCheck.enable is the toggle for GoCD agent health checks

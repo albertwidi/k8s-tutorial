@@ -1,5 +1,11 @@
 # Kubernetes Tutorial
 
+## Disclaimer
+
+This tutorial is for **beginner** in kubernetes, not for managing kubernetes cluster and its maintenance. This all about introduction to container, CI/CD and deploying application to kubernetes.
+
+## Agenda
+
 This kubernetes tutorial is using `minikube` and will cover this following agenda:
 
 1. Install helm into `minikube`
@@ -16,13 +22,19 @@ This kubernetes tutorial is using `minikube` and will cover this following agend
 
 To be able to run this tutorial, you need to install several things:
 
+### System Requirement
+
+This tutorial is build on-top `ubuntu 18.04` and is using around 4-12Gb depends on what is running on minikube.
+
+The safe point is around 8Gb
+
 ### Install Docker
 
 **Ubuntu**
 
 Please look into [this](https://docs.docker.com/install/linux/docker-ce/ubuntu/) page and follow the instruction to install docker CE linux for ubuntu.
 
-Or 
+Or
 
 Simply use this script, use it at your own risk:
 
@@ -95,6 +107,18 @@ then check your `kube-system` namespace, it should show you a `tiller` pod
 tiller-deploy-69ffbf64bc-p2mbl         1/1       Running   1          10s
 ```
 
-## Jenkins
+## Backend And Frontend Application
 
-## GoCD 
+
+
+## GoCD
+
+GoCD is a continous integration and delivery tool from Thoughtworks. 
+
+To learn more about GoCD please go into their website [here](https://www.gocd.org/getting-started/part-1/)
+
+### Building Application With GoCD
+
+## DroneIO
+
+## Jenkins
