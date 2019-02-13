@@ -1,3 +1,0 @@
-#!/bin/sh
-
-./backend-bin

@@ -1,0 +1,23 @@
+# number of pod replica
+replica:  1
+
+# image configuration of our application container
+image:
+  name: k8s-tutorial-backend
+  tag: latest
+  pullPolicy: always
+
+# service definition
+service:
+  port: 9000
+  targetPort: 9000
+
+# probe is setting for checking pod
+# liveness and readiness of pod
+probe:
+  liveness:
+    path: /health
+    port: 9001
+  readiness:
+    path: /health
+    port: 9001

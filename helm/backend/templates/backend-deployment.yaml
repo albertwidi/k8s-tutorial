@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Values.Namespace }}
+  labels:
+    app: {{ .Release.Name }}
+    version: {{ .Chart.Version }}
+spec:
+  replicas: {{ .Values.Replica }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+      version: {{ .Chart.Version }}
+  strategy:
+    rollingUpdate:
+      maxSurge: {{ .Values.RollingUpdate.maxSurge }}
+      maxUnavailable: {{ . Values.RollingUpdate.maxUnavailable }}
+  template:
+    metada:
+      labels:
+        app: {{ .Release.Name }}
+        version: {{ .Release.Version }}
+    spec:
+      containers:
+      - name: {{ .Release.Name }}
+        image: {{ printf "%s:%s" .Values.Image.name .Values.Image.tag }}
+        imagePullPolicy: {{ .Values.Image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.Service.port }}
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.Probe.liveness.path }}
+            port: {{ .Values.Probe.liveness.port }}
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.Probe.readiness.path }}
+            port: {{ .Values.Probe.readiness.port }}

@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: k8s-tutor-backend
+    ports:
+    - "9000:9000"

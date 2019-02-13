@@ -28,6 +28,12 @@ This tutorial is build on-top `ubuntu 18.04` and is using around 4-12Gb depends 
 
 The safe point is around 8Gb
 
+### Install Go
+
+This tutorial is using `go` to create programs, please make sure you have `go` inside your computer.
+
+To install go, please follow [this](https://golang.org/doc/install) link to go to golang.org tutorial for installing `go`
+
 ### Install Docker
 
 **Ubuntu**
@@ -71,6 +77,65 @@ sudo apt-get install -y kubectl
 
 ## Minikube
 
+Minikube is a tool that makes it easy to run kubernetes locally.
+
+### Installing Minikube
+
+To install minikube, please follow [this](https://kubernetes.io/docs/tasks/tools/install-minikube/) link. Or follow the steps below:
+
+**Linux**
+
+Install KVM2 driver, the KVM2 driver is intended to replace the KVM driver. KVM driver is actually deprecated:
+
+```sh
+# Install libvirt and qemu-kvm on your system, e.g.
+# Debian/Ubuntu (for older Debian/Ubuntu versions, you may have to use libvirt-bin instead of libvirt-clients and libvirt-daemon-system)
+sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm
+# Fedora/CentOS/RHEL
+sudo yum install libvirt-daemon-kvm qemu-kvm
+
+# Add yourself to the libvirt group so you don't need to sudo
+# NOTE: For older Debian/Ubuntu versions change the group to `libvirtd`
+sudo usermod -a -G libvirt $(whoami)
+
+# Update your current session for the group change to take effect
+# NOTE: For older Debian/Ubuntu versions change the group to `libvirtd`
+newgrp libvirt
+```
+
+Then install the driver itself:
+
+```sh
+curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 \
+  && sudo install docker-machine-driver-kvm2 /usr/local/bin/
+```
+
+**MacOS**
+
+For MacOS user, you can use Kubernetes in Docker for Mac. Or if you still want to install minikube, you can read the steps below:
+
+This text below is a copy of [this](https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#vmware-unified-driver) link
+
+Using VMware unified driver
+
+The VMware unified driver will eventually replace the existing vmwarefusion driver. The new unified driver supports both VMware Fusion (on macOS) and VMware Workstation (on Linux and Windows)
+
+To install the vmware unified driver, head over at [here](https://github.com/machine-drivers/docker-machine-driver-vmware/releases) and download the release for your operating system.
+
+The driver must be:
+
+1. Stored in $PATH
+2. Named docker-machine-driver-vmware
+3. Executable (chmod +x on UNIX based platforms)
+4. If you're running on macOS with Fusion, this is an easy way install the driver:
+
+```sh
+export LATEST_VERSION=$(curl -L -s -H 'Accept: application/json' https://github.com/machine-drivers/docker-machine-driver-vmware/releases/latest | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/') \
+&& curl -L -o docker-machine-driver-vmware https://github.com/machine-drivers/docker-machine-driver-vmware/releases/download/$LATEST_VERSION/docker-machine-driver-vmware_darwin_amd64 \
+&& chmod +x docker-machine-driver-vmware \
+&& mv docker-machine-driver-vmware /usr/local/bin/
+```
+
 ## Helm
 
 For helm to be fully functional, you need to `install helm` on your local and then `install tiller` to your k8s-cluster
@@ -107,18 +172,16 @@ then check your `kube-system` namespace, it should show you a `tiller` pod
 tiller-deploy-69ffbf64bc-p2mbl         1/1       Running   1          10s
 ```
 
-## Backend And Frontend Application
-
-
-
 ## GoCD
 
 GoCD is a continous integration and delivery tool from Thoughtworks. 
 
 To learn more about GoCD please go into their website [here](https://www.gocd.org/getting-started/part-1/)
 
-### Building Application With GoCD
-
 ## DroneIO
 
 ## Jenkins
+
+## The Tutorial
+
+In this tutorial, we will use `go` as our main language to build programs, and 

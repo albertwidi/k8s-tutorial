@@ -34,7 +34,7 @@ service:
 
   ## Service type can be set to ClusterIP, NodePort or LoadBalancer.
   ##
-  type: ClusterIP
+  type: LoadBalancer
 
   ## Specify a load balancer IP address to use if your provider supports it.
   # loadBalancerIP:
@@ -185,7 +185,7 @@ agent:
   ## ref: https://docs.drone.io/reference/agent/
   ##
   env:
-    DRONE_LOGS_DEBUG: "false"
+    DRONE_LOGS_DEBUG: "true"
 
   ## Number of drone agent replicas
   replicas: 3
@@ -231,7 +231,7 @@ dind:
   ## If disabled, the drone agent will spawn docker containers on the host. Pay
   ## attention to the fact that we can't enforce resource constraints in that case.
   ##
-  enabled: false
+  enabled: true
 
   ## Values in here get injected as environment variables to DinD.
   ## ref: http://readme.drone.io/admin/installation-reference
