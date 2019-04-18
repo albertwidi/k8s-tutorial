@@ -2,7 +2,9 @@ version: '3'
 
 services:
   backend:
-    image: albertwidi/k8s-tutorial-backend:latest
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: k8s-tutor-backend
     command:
     - "-address=127.0.0.1:9000"
@@ -10,7 +12,9 @@ services:
     - "9000:9000"
   
   frontend:
-    image: albertwidi/k8s-tutorial-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: k8s-tutor-frontend
     command:
     - "-address=127.0.0.1:9090"
