@@ -2,9 +2,29 @@
 
 ## Disclaimer
 
-This tutorial is for **beginner** in kubernetes, not for managing kubernetes cluster and its maintenance. This all about introduction to container, CI/CD and deploying application to kubernetes.
+This tutorial is for **beginner** in kubernetes, not for managing kubernetes cluster and its maintenance. This all about introduction to container, basic of kubernetes, CI/CD and deploying application to kubernetes.
 
 ## Agenda
+
+### Installing Pre-Requisite
+
+1. Install `docker`. Please look into the tutorial [here](https://github.com/albertwidi/k8s-tutorial/tree/master/docs/k8s-tutorial#install-docker)
+2. Install `minikube`. Please look into the tutorial [here](https://github.com/albertwidi/k8s-tutorial/tree/master/docs/k8s-tutorial#installing-minikube)
+
+### Kubernetes Basic
+
+1. Namespace
+2. Pod
+3. Deployment
+4. Service
+5. StatefulSet
+6. ReplicaSet
+7. DaemonSet
+8. Job
+9. Endpoint
+10. Ingress
+
+### CI/CD With Kubernetes
 
 This kubernetes tutorial is using `minikube` and will cover this following agenda:
 
@@ -14,7 +34,7 @@ This kubernetes tutorial is using `minikube` and will cover this following agend
 
 3. Build web application using `go`
 
-4. Build an application using Jenkins
+4. Build an application using GoCD
 
 5. Deploy an application to kubernetes cluster using helm
 

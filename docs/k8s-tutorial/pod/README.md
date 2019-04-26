@@ -43,9 +43,15 @@ spec:
 
 ## Pod Lifecycle
 
+In this section we will discussing about the pod lifecycle, liveness and readiness.
+
 ### Liveness
 
+Liveness probe needed because application might not start because of some problem
+
 ### Readiness
+
+Readiness probe needed because application might up but not ready yet to receive trraffic.
 
 ## Cases
 

@@ -23,7 +23,13 @@ metadata:
 
 To get list of all namespace, type this command: `kubectl get namespaces`. The command should give you this kind of output:
 
-```yaml
+```sh
+$ k get namespaces
+NAME              STATUS    AGE
+default           Active    76d
+kube-node-lease   Active    2d14h
+kube-public       Active    76d
+kube-system       Active    76d
 ```
 
 ### Creating Namespace
@@ -35,9 +41,35 @@ To create a new namespace, lets use `namespace.yaml` file that exists within the
 The command should give you this output:
 
 ```
+$ k apply -f docs/k8s-tutorial/namespace/namespace.yaml 
+namespace/tutorial created
 ```
 
 Lets check the namespace list once again using `kubectl get namespaces`, and you will see a new `tutorial` namespace:
 
-```yaml
+```sh
+$ k get namespaces
+NAME              STATUS    AGE
+default           Active    76d
+kube-node-lease   Active    2d14h
+kube-public       Active    76d
+kube-system       Active    76d
+tutorial          Active    25s
+```
+
+### Deleting Namespace
+
+To delete the namespace we can simply running this command:
+
+`kubectl delete -f namespace.yaml`
+
+Or if you want to delete a spesific namespace, use this command:
+
+`kubectl delet namespace tutorial`
+
+The command above will give this output:
+
+```sh
+$ k delete -f docs/k8s-tutorial/namespace/namespace.yaml
+namespace "tutorial" deleted
 ```

@@ -1,5 +1,6 @@
 FRONTEND_APPNAME=frontend-bin
 BACKEND_APPNAME=backend-bin
+REPO_NAME=albertwidi
 
 compose-up:
 	@docker-compose build
@@ -20,8 +21,8 @@ push-image:
 
 build-image-backend:
 	@cd backend && GOOS=linux CGO_ENABLED=0 go build -v -o $(BACKEND_APPNAME) *.go
-	@cd backend && docker build -f Dockerfile -t albertwidi/k8s-tutorial-backend . --rm
+	@cd backend && docker build --rm -f Dockerfile -t $(REPO_NAME)/k8s-tutorial-backend .
 
 build-image-frontend:
-	@ cd frontend && GOOS=linux CGO_ENABLED=0 go build -o $(FRONTEND_APPNAME) -v main.go
-	@docker build -f ./frontend/Dockerfile -t albertwidi/k8s-tutorial-frontend . --rm
+	@cd frontend && GOOS=linux CGO_ENABLED=0 go build -o $(FRONTEND_APPNAME) -v main.go
+	@cd frontend && docker build --rm -f ./frontend/Dockerfile -t $(REPO_NAME)/k8s-tutorial-frontend .
