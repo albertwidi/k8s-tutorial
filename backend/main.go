@@ -25,15 +25,19 @@ func main() {
 	flag.StringVar(&f.Dynamic, "dynamic_content", "", "dynamic content for backend")
 	flag.Parse()
 
+	log.Printf("configuration: %+v", f)
+
 	http.HandleFunc("/healtcheck", func(w http.ResponseWriter, r *http.Request) {
 		probe := r.FormValue("probe")
 
 		if probe == "readiness" {
+			log.Println("healthcheck: readiness")
 			w.WriteHeader(http.StatusOK)
 			return
 		}
 
 		if probe == "liveness" {
+			log.Println("healthcheck: liveness")
 			w.WriteHeader(http.StatusOK)
 			return
 		}
