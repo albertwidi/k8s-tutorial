@@ -206,3 +206,19 @@ $ curl localhost:9000/v1/content
 ### Pod CrashLoopBackOff
 
 ### Destroying Pod, Why Pod Isn't Coming Back?
+
+Let's try to delete a pod, use this command to delete the pod: `kubectl delete -f pod.yaml`
+
+```shell
+$ k delete -f pod.yaml 
+pod "tutorial-backend" deleted
+```
+
+And then try to get all the pod in `tutorial` namespace: `$ k get po -n tutorial`
+
+```shell
+$ k get po -n tutorial
+No resources found.
+```
+
+As you see in above result, there are no resources for pods found in the namespace because pods is not managed by anybody. Pod is just a unit that need to be managed by another resource.

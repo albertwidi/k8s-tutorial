@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: tutorial-backend
+  name: tutorial-backend
+  namespace: tutorial
+spec:
+  containers:
+  - image: albertwidi/k8s-tutorial-backend:latest
+    imagePullPolicy: Never
+    ports:
+    - containerPort: 9000
+      name: http
+      protocol: TCP
+    livenessProbe:
+      httpGet:
+        # when "host" is not defined, "PodIP" will be used
+        # host: my-host
+        # when "scheme" is not defined, "HTTP" scheme will be used. Only "HTTP" and "HTTPS" are allowed
+        # scheme: HTTPS
+        path: /healtcheck?probe=liveness
+        port: 9000 
+      initialDelaySeconds: 15
+      timeoutSeconds: 1
+    name: tutorial-backend

@@ -26,6 +26,15 @@ spec:
 
 ## Cases 
 
+### Pre-Requisite
+
+Before begin this tutorial, let's create a pod first by using this command: `kubectl apply -f pod.yaml`
+
+```shell
+$ k apply -f pod.yaml 
+pod/tutorial-backend created
+```
+
 ### Creating Service
 
 For creating service, you can use this command: `kubectl apply -f service.yaml`
@@ -261,4 +270,14 @@ and
 ```shell
 $ curl 10.105.123.198/v1/content
 {"dynamic":"","static":"this is static content"}
+```
+
+### Let's Delete The Pods Before Continue The Tutorial
+
+Run this command: `kubectl delete -f pod.yaml -f pod_new.yaml`
+
+```shell
+$ k delete -f pod.yaml -f pod_new.yaml
+pod "tutorial-backend" deleted
+pod "tutorial-backend-new" deleted
 ```
