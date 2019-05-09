@@ -7,7 +7,8 @@ metadata:
   namespace: tutorial
 spec:
   containers:
-  - image: albertwidi/k8s-tutorial-backend:latest
+  - name: tutorial-backend
+    image: albertwidi/k8s-tutorial-backend:latest
     imagePullPolicy: Never
     ports:
     - containerPort: 9000
@@ -23,4 +24,3 @@ spec:
         port: 9000 
       initialDelaySeconds: 15
       timeoutSeconds: 1
-    name: tutorial-backend
